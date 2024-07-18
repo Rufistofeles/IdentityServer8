@@ -20,8 +20,11 @@ try
 
     services.AddControllersWithViews();
 
+    //services.AddDbContext<ApplicationDbContext>(options =>
+    //    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
     services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
     services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<ApplicationDbContext>()
